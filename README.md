@@ -1,0 +1,2 @@
+# sempozyum.github.io
+Sempozyumlar
