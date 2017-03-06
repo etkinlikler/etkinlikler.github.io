@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eo pipefail
+
+die() {
+	echo >&2 "$@"
+	exit 1
+}
+
+usage() {
+	cat >&2 <<-EOF
+	$0: «kongre kısaltması»
+	$0 ucs17
+	EOF
+	exit 1
+}
+
+[[ $# -ne 0 ]] || usage
+
+new=$1
+shift
+
+rootdir=$(mktemp -d) || die "mktemp hatası"
+
+git subtree add --prefix "$rootdir" https://github.com/gdg-x/zeppelin master
+
+# TODO
